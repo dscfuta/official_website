@@ -53,9 +53,24 @@ RESPONSIVES
     margin-top: 50px;
   }
   .team-slider__indicators .owl-dot {
-    height: 1px;
+    height: 4px;
     width: 30%;
     margin: 0;
+  }
+  .team-slider__indicators .owl-dot.active {
+    width: 30%;
+    height: 5px;
+  }
+  .team-slider__indicators .owl-dot:first-child {
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+    border-top-right-radius: 0px !important;
+  }
+  
+  .team-slider__indicators .owl-dot:last-child {
+    border-bottom-left-radius: 0px !important;
+    border-top-right-radius: 4px !important;
+    border-bottom-right-radius: 4px !important;
   }
   .mfp-close {
     left: 50% !important;
