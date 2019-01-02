@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="DSC FUTA"/>
+    <meta name="description"
+          content="Developer Student Clubs (DSC)a is a Google Developers program for university students to learn mobile and web development skills.">
+    <meta name="keywords"
+          content="dsc, futa, kelvin kamau,google developers, sub saharan africa, kenya, computer science"/>
+    <title>DSC Admin - Login</title>
+    <link rel="icon" href="images/icon.png" type="image/png"/>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="css/admin.css" rel="stylesheet">
+
+  </head>
+
+  <body class="bg-dark">
+
+    <div class="container">
+      <div class="card card-login mx-auto mt-5">
+        <div class="card-header"><img href="images/icon.png">DSC Admin Login</div>
+        <div class="card-body">
+          <form id="loginForm">
+            <div class="alert alert-danger" id="errorAlert" style="display: none">
+              <span id="messageDisplayArea"></span>
+            </div>
+            <div class="form-group">
+              <!-- <div class="form-label-group"> -->
+                <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="required" autofocus="autofocus">
+              <!-- </div> -->
+            </div>
+            <div class="form-group">
+              <!-- <div class="form-label-group"> -->
+                <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="required">
+              <!-- </div> -->
+            </div>
+            <!-- <div class="form-group">
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" value="remember-me">
+                  Remember Password
+                </label>
+              </div>
+            </div> -->
+            <!-- <a class="btn btn-primary btn-block btn-md" href="admin.html">Login</a> -->
+            <button type="submit" class="btn btn-primary btn-block btn-md">Login</button>
+            <a class="btn btn-primary btn-block btn-md" href="index.html">Return to DSC homepage</a>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/vendors/firebase.min.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: "AIzaSyB6U0DJvc5eNtmOFd0q7YXXwdB5xl9zRvM",
+        authDomain: "dscfuta-website.firebaseapp.com",
+        databaseURL: "https://dscfuta-website.firebaseio.com",
+        projectId: "dscfuta-website",
+        storageBucket: "dscfuta-website.appspot.com",
+        messagingSenderId: "345694247293"
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="js/firebase.js"></script>
+  </body>
+
+</html>
