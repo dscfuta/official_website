@@ -34,6 +34,10 @@ $(function () {
           shownErrorMessage = 'No user with that email was found'
         } else if (errorCode === 'auth/network-request-faied') {
           shownErrorMessage = 'Network error, please check your internet connection'
+        } else if (errorCode === 'auth/wrong-password') {
+          shownErrorMessage = 'The provided password is invalid'
+        } else {
+          shownErrorMessage = 'An unknown error occured (Code ' + errorCode + ')'
         }
         $('#messageDisplayArea').text(shownErrorMessage);
         $('#errorAlert').show();
