@@ -1017,7 +1017,7 @@ hr{
 
 .team-slider__indicators .owl-dot {
   border-radius: 0 !important;
-  width: 2px;
+  width: 4px;
   height: 100px;
   background: rgba(255, 255, 255, 0.1);
   margin-left: auto;
@@ -1025,8 +1025,19 @@ hr{
   cursor: pointer;
 }
 
+.team-slider__indicators .owl-dot:first-child {
+  border-top-left-radius: 4px !important;
+  border-top-right-radius: 4px !important;
+}
+
+.team-slider__indicators .owl-dot:last-child {
+  border-bottom-left-radius: 4px !important;
+  border-bottom-right-radius: 4px !important;
+}
+
 .team-slider__indicators .owl-dot.active {
   background: #fff;
+  width: 5px;
 }
 
 .team-item .btn-light {
@@ -1071,9 +1082,38 @@ hr{
   overflow: hidden;
   width: 260px;
   height: 260px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   margin-left: auto;
   margin-right: auto;
 }
+
+.team-item__image.team-member-davidteejayc {
+  background-image: url('/images/assets/team/davidteejayc.jpg');
+}
+.team-item__image.team-member-_isdejavu {
+  background-image: url('/images/assets/team/_isdejavu.jpg');
+}
+.team-item__image.team-member-roscoefab {
+  background-image: url('/images/assets/team/roscoefab.jpg');
+}
+.team-item__image.team-member-harjacober2 {
+  background-image: url('/images/assets/team/harjacober2.jpg');
+}
+.team-item__image.team-member-osivwiokiti {
+  background-image: url('/images/assets/team/osivwiokiti.jpg');
+}
+.team-item__image.team-member-itsmanuellee {
+  background-image: url('/images/assets/team/itsmanuellee.jpg');
+}
+.team-item__image.team-member-notOnTwitterShit {
+  background-image: url('/images/assets/team/notOnTwitterShit.jpg');
+}
+.team-item__image.team-member-wrecodde {
+  background-image: url('/images/assets/team/wrecodde.jpg');
+}
+
 
 .section-faq .card {
   border: 0;
@@ -1189,6 +1229,10 @@ BACKGROUND COLORS AND SHAPES COLORS
 
 .bg-blue * {
   color: #fff;
+}
+
+.bg-blue a:hover {
+  color: #fff !important;
 }
 
 .bg-dimped__primary {
