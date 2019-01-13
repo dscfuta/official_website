@@ -1,0 +1,49 @@
+{
+  "courses": [
+    {
+      "title": "Introduction to Web Development with Angular",
+      "description": "Learn to build web apps using the Angular framework",
+      "link": "https://coursera.com/",
+      "level": "beginner"
+    },
+    {
+      "title": "Building rich apps with NodeJS and Express",
+      "description": "Learn to build powerful web apps using NodeJS and the Express Framework",
+      "link": "https://coursera.com/",
+      "level": "intermediate"
+    }
+  ],
+  "books": [
+    {
+      "title": "You Don't Know JS",
+      "author": "Getify",
+      "description": "Learn about the quirks of JavaScript you thought you knew,",
+      "link": "https://amazon.com/",
+      "level": "intermediate",
+      "types": [
+        "print",
+        "ebook",
+        "web"
+      ]
+    },
+    {
+      "title": "",
+      "author": "",
+      "description": "",
+      "link": "",
+      "level": "beginner",
+      "types": [
+        "print",
+        "web"
+      ]
+    }
+  ],
+  "documentation": [
+    {
+      "title": "",
+      "description": "",
+      "link": "",
+      "level": "expert"
+    }
+  ]
+}
