@@ -110,4 +110,16 @@ $(function () {
       $projectList.append(makeProjectNode(data));
     });
   })
+  var pastEventsAPIURL = `https://api.meetup.com/dscfuta/events?photo-host=public&has_ended=true&page=20&sig_id=249060230&status=past&sig=3243eb6908752971af8ecb988f341ad39c889ed0`;
+  var upcomingEvents = `https://api.meetup.com/dscfuta/events?photo-host=public&page=20&sig_id=249060230&sig=d36cd25d0e3847b6a2d1eb214bf73dc5e7392b44`;
+  console.log('[DSC:Events]', 'Fetching...')
+  $.get(pastEventsAPIURL, function (data) {
+    console.log('[DSC:Events]', 'Fetched Past Events')
+    var events = Object.values(data);
+    console.log(events);
+  }, 'json');
+  $.get(upcomingEvents, function (data) {
+    var events = Object.values(data);
+    console.log(events);
+  }, 'json');
 });
