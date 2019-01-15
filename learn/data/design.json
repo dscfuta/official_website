@@ -1,23 +1,23 @@
 {
   "courses": [
     {
-      "title": "Introduction to Web Design and Development with HTML5, CSS3 and Angular",
-      "description": "Learn to build web apps using the Angular framework",
+      "title": "Getting it right in product design",
+      "description": "Get to learn what is necessary as a product designer",
       "link": "https://coursera.com/",
       "level": "beginner"
     },
     {
-      "title": "Building rich apps with NodeJS and Express",
-      "description": "Learn to build powerful web apps using NodeJS and the Express Framework",
+      "title": "Enlarge your design coast",
+      "description": "Learn how to remain make the right designs",
       "link": "https://coursera.com/",
       "level": "intermediate"
     }
   ],
   "books": [
     {
-      "title": "Activate The Web In You",
+      "title": "Design never go wrong",
       "author": "Writer",
-      "description": "Get to know about the basics of web design and development",
+      "description": "Get to know about the basics of product design",
       "link": "https://amazon.com/",
       "level": "beginner",
       "types": [
@@ -28,9 +28,9 @@
     },
     {
      
-      "title": "You Don't Know JS",
-      "author": "Getify",
-      "description": "Learn about the quirks of JavaScript you thought you knew",
+      "title": "Design never go wrong volume 2",
+      "author": "Getify, Writer",
+      "description": "Guard yourself with the techniques of design",
       "link": "https://amazon.com/",
       "level": "intermediate",
       "types": [

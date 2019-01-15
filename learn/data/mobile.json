@@ -1,23 +1,23 @@
 {
   "courses": [
     {
-      "title": "Introduction to Web Design and Development with HTML5, CSS3 and Angular",
-      "description": "Learn to build web apps using the Angular framework",
+      "title": "Introduction to Mobile Development with Java",
+      "description": "Learn to build mobile apps the java way",
       "link": "https://coursera.com/",
       "level": "beginner"
     },
     {
-      "title": "Building rich apps with NodeJS and Express",
-      "description": "Learn to build powerful web apps using NodeJS and the Express Framework",
+      "title": "Building rich apps with Kotlin and Flutter",
+      "description": "Learn to build powerful mobile apps using Kotlin and the Flutter Framework",
       "link": "https://coursera.com/",
       "level": "intermediate"
     }
   ],
   "books": [
     {
-      "title": "Activate The Web In You",
+      "title": "How to get things done in Java",
       "author": "Writer",
-      "description": "Get to know about the basics of web design and development",
+      "description": "Get to know about the basics of Java",
       "link": "https://amazon.com/",
       "level": "beginner",
       "types": [
@@ -28,9 +28,9 @@
     },
     {
      
-      "title": "You Don't Know JS",
+      "title": "Flutter it, Kotlin it",
       "author": "Getify",
-      "description": "Learn about the quirks of JavaScript you thought you knew",
+      "description": "Guard yourself with the quirks of Kotlin and Flutter",
       "link": "https://amazon.com/",
       "level": "intermediate",
       "types": [

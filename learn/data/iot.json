@@ -1,23 +1,23 @@
 {
   "courses": [
     {
-      "title": "Introduction to Web Design and Development with HTML5, CSS3 and Angular",
-      "description": "Learn to build web apps using the Angular framework",
+      "title": "Internet of Things",
+      "description": "Learn the bascis of IoT",
       "link": "https://coursera.com/",
       "level": "beginner"
     },
     {
-      "title": "Building rich apps with NodeJS and Express",
-      "description": "Learn to build powerful web apps using NodeJS and the Express Framework",
+      "title": "Commanding the IoTs",
+      "description": "Learn to be more efficient in IoT",
       "link": "https://coursera.com/",
       "level": "intermediate"
     }
   ],
   "books": [
     {
-      "title": "Activate The Web In You",
+      "title": "The Do's and Don'ts of IoT",
       "author": "Writer",
-      "description": "Get to know about the basics of web design and development",
+      "description": "Learning the right approach to IoT",
       "link": "https://amazon.com/",
       "level": "beginner",
       "types": [
@@ -28,9 +28,9 @@
     },
     {
      
-      "title": "You Don't Know JS",
-      "author": "Getify",
-      "description": "Learn about the quirks of JavaScript you thought you knew",
+      "title": "The Do's and Don'ts of IoT volume 2",
+      "author": "Getify and Writer",
+      "description": "Keepin in track with he right approach to IoT",
       "link": "https://amazon.com/",
       "level": "intermediate",
       "types": [
