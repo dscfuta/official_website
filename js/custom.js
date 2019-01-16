@@ -27,7 +27,7 @@ $(document).ready(function(){
     });
 });
 
-(function($, Handlebars) {
+(function($) {
   'use strict';
 
   /*====================================================*/
@@ -152,4 +152,4 @@ $(document).ready(function(){
       }
     }
   });
-})(jQuery, Handlebars);
+})(jQuery);
