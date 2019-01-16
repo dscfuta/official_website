@@ -27,8 +27,25 @@
       color: "info"
     }
   }
+  function isValidSection(id) {
+    var valid = false;
+    for (var i = 0; i < sections.length;i++) {
+      var section = sections[i];
+      if (section.id === id) {
+        valid = true;
+        break;
+      }
+    }
+    return valid;
+  }
   var sectionData = {};
   var activeSectionId = "web";
+  if (location.hash) {
+    var sectionId = location.hash.slice(1);
+    if (isValidSection(sectionId)) {
+      activeSectionId = sectionId;
+    }
+  }
   var $sectionChooser = $('#section-chooser');
   var $sectionContent = $('#section-content');
   Handlebars.registerHelper('levelTag', function (level) {
@@ -39,7 +56,6 @@
     )
   })
   Handlebars.registerHelper('bookTags', function () {
-    console.log(this);
     var typesEscaped = this.types.map(function (type) { return Handlebars.escapeExpression(type) });
     var result = '';
     typesEscaped.forEach(function (type) {
