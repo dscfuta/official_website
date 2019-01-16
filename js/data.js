@@ -19,6 +19,8 @@ $(function () {
     timestampsInSnapshots: true
   });
   var $projectList = $('#projectList');
+  var $upcomingEventsList = $('#upcomingEventsList');
+  var $pastEventsList = $('#pastEventsList');
   function makeViewProjectButtonNode(link) {
     var icon = $('<i></i>').addClass('fas fa-arrow-right');
     return $('<a></a>')
@@ -76,7 +78,7 @@ $(function () {
   }
   function makeProjectWrapperNode() {
     return $('<div></div>')
-      .addClass('col-sm-4')
+      .addClass('col-md-4')
   }
   function makeProjectCardNode() {
     return $('<div></div>')
@@ -103,23 +105,118 @@ $(function () {
     return wrapper;
   }
   // $projectList.empty()
+  function makeErrorNode(error, icon) {
+    icon = icon || document.createTextNode(':(');
+    return $('<div></div>')
+      .addClass('message-wrapper')
+      .append(
+        $('<div></div>').addClass('message-icon').append(icon)
+      )
+      .append(
+        $('<div></div>').addClass('message-text').append(error)
+      );
+  }
   db.collection('projects').get().then(function (querySnapshot) {
     $projectList.empty()
     querySnapshot.forEach(function (doc) {
       var data = doc.data();
       $projectList.append(makeProjectNode(data));
     });
+  }).catch(function (err) {
+    console.warn(err);
+    $projectList.empty();
+    $projectList.append(makeErrorNode('Failed to fetch projects, please check your internet connection'));
   })
-  var pastEventsAPIURL = `https://api.meetup.com/dscfuta/events?photo-host=public&has_ended=true&page=20&sig_id=249060230&status=past&sig=3243eb6908752971af8ecb988f341ad39c889ed0`;
-  var upcomingEvents = `https://api.meetup.com/dscfuta/events?photo-host=public&page=20&sig_id=249060230&sig=d36cd25d0e3847b6a2d1eb214bf73dc5e7392b44`;
-  console.log('[DSC:Events]', 'Fetching...')
-  $.get(pastEventsAPIURL, function (data) {
-    console.log('[DSC:Events]', 'Fetched Past Events')
-    var events = Object.values(data);
-    console.log(events);
-  }, 'json');
-  $.get(upcomingEvents, function (data) {
-    var events = Object.values(data);
-    console.log(events);
-  }, 'json');
+  var eventTemplateSource = document.getElementById('events-template').innerHTML;
+  var eventTemplate = Handlebars.compile(eventTemplateSource);
+  var pastEventsTemplateSource = document.getElementById('past-events-template').innerHTML;
+  var pastEventsTemplate = Handlebars.compile(pastEventsTemplateSource);
+  var errorTemplateSource = document.getElementById('error-message-template').innerHTML;
+  var errorTemplate = Handlebars.compile(errorTemplateSource);
+  var spinnerTemplateSource = document.getElementById('spinner-template').innerHTML;
+  var spinnerTemplate = Handlebars.compile(spinnerTemplateSource);
+  $upcomingEventsList.empty();
+  $upcomingEventsList.html(spinnerTemplate());
+  $pastEventsList.empty();
+  $pastEventsList.html(spinnerTemplate());
+  function convertDateTimestampToString(date) {
+    if (date.from) {
+      return {
+        date: new Date(date.from.seconds * 1000).toLocaleDateString() + ' - ' + new Date(date.to.seconds * 1000).toLocaleDateString(),
+      }
+    } else {
+      return {
+        date: new Date(date.seconds * 1000).toLocaleDateString(),
+        time: new Date(date.seconds * 1000).toLocaleTimeString()
+      }
+    }
+  }
+  db.collection('events').get().then(function (querySnapshot) {
+    $upcomingEventsList.empty();
+    $pastEventsList.empty();
+    var docDatas = [];
+    querySnapshot.forEach(function (doc) {
+      docDatas.push(doc.data());
+    });
+    var pastEvents = docDatas.filter(function (doc) {
+      var docDate = doc.date;
+      var date;
+      var now = new Date();
+      if (doc.from) {
+        date = new Date(doc.to.seconds);
+      } else {
+        date = new Date(docDate.seconds);
+      }
+      return now > date;
+    })
+    var upcomingEvents = docDatas.filter(function (doc) {
+      var docDate = doc.date;
+      var date;
+      var now = new Date();
+      if (doc.from) {
+        date = new Date(doc.to);
+      } else {
+        date = new Date(docDate);
+      }
+      return now < date;
+    })
+    pastEvents = pastEvents.map(function (event) {
+      var newEvent = Object.assign({}, event, convertDateTimestampToString(event.date));
+      return newEvent
+    })
+    upcomingEvents = upcomingEvents.map(function (event) {
+      var newEvent = Object.assign({}, event, convertDateTimestampToString(event.date));
+      return newEvent
+    })
+    var html;
+    if (upcomingEvents.length === 0) {
+      html = errorTemplate({
+        error: 'We have nothing planned, for now...'
+      })
+    } else {
+      html = eventTemplate({
+        events: upcomingEvents
+      });
+    }
+    $upcomingEventsList.html(html)
+    if (pastEventsTemplate.length === 0) {
+      html = errorTemplate({
+        error: 'Our past remains blank, look to the future...'
+      })
+    } else {
+      html = pastEventsTemplate({
+        events: pastEvents
+      })
+    }
+    $pastEventsList.html(html);
+  }).catch(function (err) {
+    console.warn(err);
+    $upcomingEventsList.empty();
+    $pastEventsList.empty();
+    var html = errorTemplate({
+      error: 'Failed to fetch events, please check your internet connection'
+    });
+    $upcomingEventsList.html(html);
+    $pastEventsList.html(html);
+  })
 });
