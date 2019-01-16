@@ -126,7 +126,6 @@ $(function () {
       }
       querySnapshot.forEach(function (doc) {
         var data = doc.data()
-        console.log(`${doc.id}`, data)
 
         $projectsTableBody.append(makeRow([
           makeCol(data.name),
