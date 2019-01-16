@@ -76,6 +76,15 @@ $(function () {
     iconWrapper.append(icon);
     return iconWrapper;
   }
+  function makeProjectRepoLinkNode(repo) {
+    var icon = $('<i></i>').addClass('fas fa-arrow-right');
+    return $('<a></a>')
+    .attr({ target: '_blank', rel: 'noreferrer noopener' })
+    .attr({ href: repo })
+    .addClass('btn btn-primary btn-sm mt-2')
+    .append(document.createTextNode('Source code '))
+    .append(icon);
+  }
   function makeProjectWrapperNode() {
     return $('<div></div>')
       .addClass('col-md-4')
@@ -98,7 +107,8 @@ $(function () {
       makeProjectNameNode(project.name),
       makeProjectDescriptionNode(project.description),
       makeProjectDevelopersNode(project.developers),
-      makeViewProjectButtonNode(project.link)
+      makeViewProjectButtonNode(project.link),
+      makeProjectRepoLinkNode(project.repo)
     ]);
     card.append(body);
     wrapper.append(card);
