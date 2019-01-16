@@ -7,8 +7,7 @@
     { name: "Mobile", color: "primary", icon: "fas fa-mobile-alt", id: "mobile" },
     { name: "Web", color: "secondary", icon: "fab fa-node-js", id: "web" },
     { name: "Machine Learning / AI", color: "warning", icon: "fas fa-microchip", id: "mlai" },
-    { name: "IOT / Android Things", color: "danger", icon: "fas fa-sync", id: "iot" },
-    { name: "Product Design", color: "info", icon: "fab fa-wpforms", id: "design" }
+    { name: "Cloud", color: "danger", icon: "fas fa-cloud", id: "cloud" }
   ];
   var bookTypes = {
     print: {
