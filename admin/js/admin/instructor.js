@@ -176,12 +176,14 @@ $(function () {
       .addClass('ml-1')
       .append($('<i></i>').addClass('fas').addClass('fa-trash'))
       .on('click', function () {
+        var docId = doc.id
         var confirmDelete = confirm('Delete instructor ' + doc.data().name + '?');
         if (confirmDelete) {
-          instructorImagesRef.child('')
           db.collection("instructors")
-          .doc(doc.id)
+          .doc(docId)
           .delete().then(function () {
+            return instructorImagesRef.child(docId).delete()
+          }).then(function () {
             fetchInstructorsData()
           }).catch(function (error) {
             alert('Failed to delete instructor because ' + error.message);
