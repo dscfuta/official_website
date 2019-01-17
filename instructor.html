@@ -11,7 +11,7 @@
           content="Developer Student Clubs (DSC)a is a Google Developers program for university students to learn mobile and web development skills.">
     <meta name="keywords"
           content="dsc, futa, kelvin kamau,google developers, sub saharan africa, kenya, computer science"/>
-    <title>DSC Admin - Dashboard</title>
+    <title>DSC Admin - Events</title>
     <link rel="icon" href="images/icon.png" type="image/png"/>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -60,31 +60,31 @@
 
       <!-- Sidebar -->
       <ul class="sidebar navbar-nav">
-				<li class="nav-item active">
-					<a class="nav-link" href="admin.html">
-						<i class="fas fa-fw fa-tachometer-alt"></i>
-						<span>Dashboard</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="instructor.html">
-						<i class="fas fa-fw fa-user-alt"></i>
-						<span>Instructors</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="events.html">
-						<i class="fas fa-fw fa-calendar-alt"></i>
-						<span>Events</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="projects.html">
-						<i class="fas fa-fw fa-folder"></i>
-						<span>Projects</span>
-					</a>
-				</li>
-			</ul>
+        <li class="nav-item">
+          <a class="nav-link" href="admin.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i>
+            <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item active">
+			<a class="nav-link" href="instructor.html">
+			  <i class="fas fa-fw fa-user-alt"></i>
+			  <span>Instructor</span>
+			</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="events.html">
+			  <i class="fas fa-fw fa-calendar-alt"></i>
+			  <span>Events</span>
+			</a>
+		  </li>
+		  <li class="nav-item">
+			<a class="nav-link" href="projects.html">
+			  <i class="fas fa-fw fa-folder"></i>
+			  <span>Projects</span>
+			</a>
+		  </li>
+      </ul>
 
       <div id="content-wrapper">
 
@@ -95,51 +95,47 @@
             <li class="breadcrumb-item">
               <a href="#">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Overview</li>
+            <li class="breadcrumb-item active">Instructors</li>
           </ol>
-          <div class="row">
-            <div class="col-md-4">
-              <a href="projects.html" class="card bg-primary text-white section-card">
-                <div class="card-body">
-                  <h5 class="card-title">Projects</h5>
-                  <h6 class="card-subtitle">View, create and modify project data.</h6>
-                </div>
-                <div class="d-flex justify-content-end px-3 py-3">
-                  <i class="fas fa-arrow-right fa-2x"></i>
-                </div>
-              </a>
+          
+          <!-- dashboard card -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-fw fa-user"></i>
+              Instructor
+              <i class="fas fa-sync fa-spin" id="refreshButton"></i>
             </div>
-            <div class="col-md-4">
-              <a href="events.html" class="card bg-info text-white section-card">
-                <div class="card-body">
-                  <h5 class="card-title">Events</h5>
-                  <h6 class="card-subtitle">View, create and modify event data.</h6>
-                </div>
-                <div class="d-flex justify-content-end px-3 py-3">
-                  <i class="fas fa-arrow-right fa-2x"></i>
-                </div>
-              </a>
+            <div class="card-body">
+              <div class="alert alert-danger" id="instructorErrorAlert" style="display: none">
+              </div>
+              <table class="table table-striped" id="instructorsTable" style="min-width: 100%">
+                <thead>
+                  <tr>
+                    <th>Instructor's Name</th>
+                    <th>Instructor's Bio</th>
+                    <th>Instructor's Role</th>
+                    <th>Instructor's TwitterId</th>
+                    <th>Instructor's GithubId</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+              </table>
             </div>
-            <div class="col-md-4">
-              <a href="instructor.html" class="card bg-success text-white section-card">
-                <div class="card-body">
-                  <h5 class="card-title">Instructors</h5>
-                  <h6 class="card-subtitle">View, create and modify instructor data.</h6>
-                </div>
-                <div class="d-flex justify-content-end px-3 py-3">
-                  <i class="fas fa-arrow-right fa-2x"></i>
-                </div>
-              </a>
+            <div class="card-footer text-right">
+              <button class="btn btn-primary" id="addButton" disabled>Add Instructor</a>
             </div>
           </div>
-        <!-- Sticky Footer -->
-        <footer class="sticky-footer">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright © DSC FUTA 2018</span>
-            </div>
-          </div>
-        </footer>
+		   <!-- Sticky Footer -->
+	      <footer class="sticky-footer">
+	       <div class="container my-auto">
+		      <div class="copyright text-center my-auto">
+		         <span>Copyright © DSC FUTA 2018</span>
+		      </div>
+	      </div>
+    	</footer>
 
       </div>
       <!-- /.content-wrapper -->
@@ -173,6 +169,62 @@
       </div>
     </div>
 
+    <!-- Create/Edit Instructor Modal -->
+    <div class="modal" id="instructorModal" tabindex="-1" role="dialog" aria-labelledby="instructorModalTitle" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+		  <form class="modal-content" id="instructorForm">
+			<div class="modal-header">
+			  <h5 class="modal-title" id="instructorModalTitle"><span class="instructorModalModeText">Add</span> Instructor</h5>
+			  <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+				<span aria-hidden="true">×</span>
+			  </button>
+			</div>
+			<div class="modal-body">
+			  <div class="alert alert-danger" id="instructorModalErrorAlert" style="display: none"></div>
+			  <div class="row mb-3">
+				<div class="col-12">
+				  <input class="form-control" id="instructorName" placeholder="Instructor's Name" required>
+				</div>
+			  </div>
+			  <div class="row mb-3">
+				<div class="col-12">
+				  <textarea class="form-control" id="instructorBio" placeholder="Instructor's Bio" required></textarea>
+				</div>
+			</div>
+			  <div class="row mb-3">
+				<div class="col-12">
+				  <input class="form-control" type="text" id="instructorRole" placeholder="Instructor's Role" required>
+				</div>
+			  </div>
+			  <div class="row mb-3">
+				<div class="col-6">
+				  <input class="form-control" type="text" id="instructorTwitterId" placeholder="Instructor's Twitter Id" required>
+        </div>
+        <div class="col-6">
+				  <input class="form-control" type="text" id="instructorGithubId" placeholder="Instructor's Github Id" required>
+				</div>
+			  </div>
+			  <div class="row mb-3">
+				<div class="col-12 mb-3">
+				  <input class="form-control" type="file" multiple="multiple"  id="instructorImage" placeholder="Instructor's Image"  accept="image/*" required>
+        </div>
+        <div class="col-12">
+          <div class="progress" id="imageUploadProgress" style="display: none; height: 32px;">
+            <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+          </div>
+        </div>
+			  </div>
+		
+			</div>
+			<div class="modal-footer">
+			  <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+			  <button class="btn btn-primary" id="projectSubmitButton" type="submit"><span class="instructorModalModeText">Add</span></a>
+			</div>
+		  </form>
+		</div>
+	  </div>
+
+
     <script src="js/vendors/firebase.min.js"></script>
     <script>
       // Initialize Firebase
@@ -193,7 +245,7 @@
     <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <script src="js/admin.min.js"></script>
     <script src="js/firebase.js"></script>
-    <script src="js/admin/dashboard.js"></script>
+    <script src="js/admin/instructor.js"></script>
 
   </body>
 

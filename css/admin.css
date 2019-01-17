@@ -336,9 +336,9 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 }
 
 footer.sticky-footer {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
+  /* display: -webkit-box; */
+  /* display: -ms-flexbox; */
+  display: none;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -369,8 +369,26 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 
-#refreshProjectsButton {
+#refreshProjectsButton, #refreshButton {
   float: right;
   display: block;
   cursor: pointer;
+}
+
+.section-card {
+  height: 200px;
+  overflow: hidden;
+  transition: 0.2s ease-out;
+}
+.section-card i.fas {
+  transform: translateX(100px);
+  transition: 0.2s ease-out;
+}
+.section-card:hover {
+  text-decoration: none !important;
+  box-shadow: 2px 2px 10px rgba(52, 58, 64, 0.2);
+}
+
+.section-card:hover i.fas {
+  transform: translateX(0);
 }

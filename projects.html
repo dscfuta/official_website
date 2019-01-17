@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="DSC FUTA"/>
+    <meta name="description"
+          content="Developer Student Clubs (DSC)a is a Google Developers program for university students to learn mobile and web development skills.">
+    <meta name="keywords"
+          content="dsc, futa, kelvin kamau,google developers, sub saharan africa, kenya, computer science"/>
+    <title>DSC Admin - Events</title>
+    <link rel="icon" href="images/icon.png" type="image/png"/>
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+    <link href="css/admin.css" rel="stylesheet">
+
+  </head>
+
+  <body id="page-top">
+
+    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+      <a class="navbar-brand mr-1" href="index.html"><img href="images/icon.png">DSC Admin</a>
+      
+      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+        <i class="fas fa-bars"></i>
+      </button>
+
+      <!-- Navbar Search -->
+      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder=" " aria-label="Search" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-primary" type="button">
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+      </form>
+
+      <!-- Navbar -->
+      <ul class="navbar-nav ml-auto ml-md-0">
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-user-circle fa-fw"></i>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
+            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+            <a class="dropdown-item" href="index.html">Back to homepage</a>
+          </div>
+        </li>
+      </ul>
+
+    </nav>
+
+    <div id="wrapper">
+
+      <!-- Sidebar -->
+			<ul class="sidebar navbar-nav">
+				<li class="nav-item">
+					<a class="nav-link" href="admin.html">
+						<i class="fas fa-fw fa-tachometer-alt"></i>
+						<span>Dashboard</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="instructor.html">
+						<i class="fas fa-fw fa-user-alt"></i>
+						<span>Instructors</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="events.html">
+						<i class="fas fa-fw fa-calendar-alt"></i>
+						<span>Events</span>
+					</a>
+				</li>
+				<li class="nav-item active">
+					<a class="nav-link" href="projects.html">
+						<i class="fas fa-fw fa-folder"></i>
+						<span>Projects</span>
+					</a>
+				</li>
+			</ul>
+
+      <div id="content-wrapper">
+
+        <div class="container-fluid">
+
+          <!-- Breadcrumbs-->
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="#">Dashboard</a>
+            </li>
+            <li class="breadcrumb-item active">Projects</li>
+          </ol>
+          
+          <!-- dashboard card -->
+          <div class="card mb-3">
+            <div class="card-header">
+              <i class="fas fa-fw fa-folder"></i>
+              Projects
+              <i class="fas fa-sync fa-spin" id="refreshProjectsButton"></i>
+            </div>
+            <div class="card-body">
+              <div class="alert alert-danger" id="projectErrorAlert" style="display: none">
+              </div>
+              <table class="table table-striped" id="projectsTable" style="min-width: 100%">
+                <thead>
+                  <tr>
+                    <th>Project Name</th>
+                    <th>Project Description</th>
+                    <th>Project Stack</th>
+					<th>Project Developers</th>
+					<th>Project Source</th>
+                    <th>Project Link</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+			</table>
+		</div>
+		<div class="card-footer text-right">
+		  <button class="btn btn-primary" id="addProjectButton" disabled>Add Project</a>
+		</div>
+	</div>
+
+	<!-- Sticky Footer -->
+	<footer class="sticky-footer">
+	  <div class="container my-auto">
+		<div class="copyright text-center my-auto">
+		  <span>Copyright © DSC FUTA 2018</span>
+		</div>
+	  </div>
+	</footer>
+
+  </div>
+  <!-- /.content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+  <i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<div class="modal-content">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+		<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		  <span aria-hidden="true">×</span>
+		</button>
+	  </div>
+	  <div class="alert alert-danger" style="display: none" id="errorAlert">
+	  </div>
+	  <div class="modal-body">Do you want to logout?</div>
+	  <div class="modal-footer">
+		<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+		<button class="btn btn-primary" type="button" id="logoutButton">Logout</a>
+	  </div>
+	</div>
+  </div>
+</div>
+
+<!-- Create/Edit Project Modal -->
+<div class="modal" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+	<form class="modal-content" id="projectForm">
+	  <div class="modal-header">
+		<h5 class="modal-title" id="projectModalTitle"><span class="projectModalModeText">Add</span> Project</h5>
+		<button class="close" type="button" data-dismiss="modal" aria-label="Close">
+		  <span aria-hidden="true">×</span>
+		</button>
+	  </div>
+	  <div class="modal-body">
+		<div class="alert alert-danger" id="projectModalErrorAlert" style="display: none"></div>
+		<div class="row mb-3">
+		  <div class="col-12">
+			<input class="form-control" id="projectName" placeholder="Project Name" required>
+		  </div>
+		</div>
+		<div class="row mb-3">
+		  <div class="col-12">
+			<textarea class="form-control" id="projectDescription" placeholder="Project Description" required></textarea>
+		  </div>
+		</div>
+		<div class="row mb-3">
+		  <div class="col-12">
+			<select class="form-control" id="projectStack" required>
+			  <option value="web">Web</option>
+			  <option value="mobile">Mobile</option>
+			  <!-- <option value="mlai">AI / Machine Learning</option> 
+			  <option value="iot">Internet of Things</option>
+			  <option value="design">Product Design</option> -->
+			</select>
+			<!-- <input class="form-control" id="projectStack" placeholder="Project Stack" required> -->
+		  </div>
+		</div>
+		<div class="row mb-3">
+		  <div class="col-12">
+			<input class="form-control" id="projectDevelopers" placeholder="Project Developers" required>
+			<small class="form-text text-muted">A comma separated list of twitter handles.</small>
+		  </div>
+		</div>
+		<div class="row mb-3">
+			<div class="col-12">
+			  <input class="form-control" id="projectRepo" placeholder="Project Github Source Code" required>
+			</div>
+			</div>
+		<div class="row mb-3">
+		  <div class="col-12">
+			<input class="form-control" id="projectLink" placeholder="Project Link" required>
+		  </div>
+		</div>
+	  </div>
+	  <div class="modal-footer">
+		<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+		<button class="btn btn-primary" id="projectSubmitButton" type="submit"><span class="projectModalModeText">Add</span></a>
+	  </div>
+	</form>
+  </div>
+</div>
+
+<script src="js/vendors/firebase.min.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+	apiKey: "AIzaSyB6U0DJvc5eNtmOFd0q7YXXwdB5xl9zRvM",
+	authDomain: "dscfuta-website.firebaseapp.com",
+	databaseURL: "https://dscfuta-website.firebaseio.com",
+	projectId: "dscfuta-website",
+	storageBucket: "dscfuta-website.appspot.com",
+	messagingSenderId: "345694247293"
+  };
+  firebase.initializeApp(config);
+</script>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="vendor/datatables/jquery.dataTables.min.js"></script>
+<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+<script src="js/admin.min.js"></script>
+<script src="js/firebase.js"></script>
+<script src="js/admin/projects.js"></script>
+
+</body>
+
+</html>
