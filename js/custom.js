@@ -71,27 +71,10 @@ $(document).ready(function(){
   });
 
   /*====================================================*/
-  /* team SLIDER                                 */
+  /* team SLIDER                                        */
+  /* Moved to data.js during migration to Firebase      */
   /*====================================================*/
 
-
-  var $ClientsSlider = $('.team-slider');
-  if ($ClientsSlider.length > 0) {
-    $ClientsSlider.owlCarousel({
-      loop: true,
-      center: true,
-      margin: 0,
-      items: 1,
-      nav: false,
-      dots: true,
-      lazyLoad: true,
-      dotsContainer: '.dots'
-    })
-    $('.owl-dot').on('click', function() {
-      $(this).addClass('active').siblings().removeClass('active');
-      $ClientsSlider.trigger('to.owl.carousel', [$(this).index(), 300]);
-    });
-  }
 
   var swiper = new Swiper('.screen-slider', {
     direction: 'horizontal',

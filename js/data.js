@@ -18,137 +18,19 @@ $(function () {
   db.settings({
     timestampsInSnapshots: true
   });
+  // Initialize Firebase Storage
+  var storage = firebase.storage();
+  var storageRef = storage.ref();
+  var instructorImagesRef = storageRef.child('images/instructors');
+
   var $projectList = $('#projectList');
   var $upcomingEventsList = $('#upcomingEventsList');
   var $pastEventsList = $('#pastEventsList');
-  function makeViewProjectButtonNode(link) {
-    var icon = $('<i></i>').addClass('fas fa-arrow-right');
-    return $('<a></a>')
-      .addClass('btn btn-primary btn-md')
-      .attr({ target: '_blank', rel: 'noreferrer noopener' })
-      .attr({ href: link })
-      .append(document.createTextNode('View project '))
-      .append(icon);
+  var $teamSliderIndicators = $('.team-slider__indicators');
+  var $teamSlider = $('.team-slider');
+  function makeOwlDot() {
+    return $('<li></li>').addClass('owl-dot');
   }
-  function makeProjectNameNode(name) {
-    return $('<h4></h4')
-      .addClass('feature-title')
-      .text(name);
-  }
-  function makeProjectDescriptionNode(description) {
-    return $('<p></p>')
-      .text(description);
-  }
-  function makeProjectDeveloperLinkNode(developer) {
-    return $('<a></a>')
-      .attr({ target: '_blank', rel: 'noreferrer noopener' })
-      .attr({ href: 'https://twitter.com/' + developer.substr(1) })
-      .text(developer);
-  }
-  function makeProjectDevelopersNode(developers) {
-    developers = developers
-      .split(',')
-      .map(function (developer) { return developer.trim() });
-    var children = [];
-    developers.forEach(function (developer, index) {
-      children.push(makeProjectDeveloperLinkNode(developer));
-      if (index !== developers.length - 1) children.push(document.createTextNode(', '));
-    })
-    return $('<p></p>')
-      .append(children);
-  }
-  function makeProjectIconNode(stack) {
-    stack = stack.toLowerCase()
-    var iconWrapper = $('<div></div>').addClass('u-icon u-icon__circle u-icon__lg')
-    var icon = $('<i></i>');
-    switch (stack) {
-      case 'web':
-        iconWrapper.addClass('bg-dimped__primary')
-        icon.addClass('fab fa-chrome');
-        break;
-      case 'mobile':
-        iconWrapper.addClass('bg-dimped__secondary');
-        icon.addClass('fas fa-mobile-alt');
-        break;
-      default:
-        throw new Error('Unknown stack: ' + stack);
-    }
-    iconWrapper.append(icon);
-    return iconWrapper;
-  }
-  function makeProjectRepoLinkNode(repo) {
-    var icon = $('<i></i>').addClass('fas fa-arrow-right');
-    return $('<a></a>')
-    .attr({ target: '_blank', rel: 'noreferrer noopener' })
-    .attr({ href: repo })
-    .addClass('btn btn-primary btn-sm mt-2')
-    .append(document.createTextNode('Source code '))
-    .append(icon);
-  }
-  function makeProjectWrapperNode() {
-    return $('<div></div>')
-      .addClass('col-md-4')
-  }
-  function makeProjectCardNode() {
-    return $('<div></div>')
-      .addClass('feature-card');
-  }
-  function makeProjectBodyNode() {
-    return $('<div></div>')
-      .addClass('feature-card__body');
-  }
-  function makeProjectNode(project) {
-    var wrapper = makeProjectWrapperNode();
-    var card = makeProjectCardNode();
-    var body = makeProjectBodyNode();
-
-    card.append(makeProjectIconNode(project.stack));
-    body.append([
-      makeProjectNameNode(project.name),
-      makeProjectDescriptionNode(project.description),
-      makeProjectDevelopersNode(project.developers),
-      makeViewProjectButtonNode(project.link),
-      makeProjectRepoLinkNode(project.repo)
-    ]);
-    card.append(body);
-    wrapper.append(card);
-    return wrapper;
-  }
-  // $projectList.empty()
-  function makeErrorNode(error, icon) {
-    icon = icon || document.createTextNode(':(');
-    return $('<div></div>')
-      .addClass('message-wrapper')
-      .append(
-        $('<div></div>').addClass('message-icon').append(icon)
-      )
-      .append(
-        $('<div></div>').addClass('message-text').append(error)
-      );
-  }
-  db.collection('projects').get().then(function (querySnapshot) {
-    $projectList.empty()
-    querySnapshot.forEach(function (doc) {
-      var data = doc.data();
-      $projectList.append(makeProjectNode(data));
-    });
-  }).catch(function (err) {
-    console.warn(err);
-    $projectList.empty();
-    $projectList.append(makeErrorNode('Failed to fetch projects, please check your internet connection'));
-  })
-  var eventTemplateSource = document.getElementById('events-template').innerHTML;
-  var eventTemplate = Handlebars.compile(eventTemplateSource);
-  var pastEventsTemplateSource = document.getElementById('past-events-template').innerHTML;
-  var pastEventsTemplate = Handlebars.compile(pastEventsTemplateSource);
-  var errorTemplateSource = document.getElementById('error-message-template').innerHTML;
-  var errorTemplate = Handlebars.compile(errorTemplateSource);
-  var spinnerTemplateSource = document.getElementById('spinner-template').innerHTML;
-  var spinnerTemplate = Handlebars.compile(spinnerTemplateSource);
-  $upcomingEventsList.empty();
-  $upcomingEventsList.html(spinnerTemplate());
-  $pastEventsList.empty();
-  $pastEventsList.html(spinnerTemplate());
   function convertDateTimestampToString(date) {
     if (date.from) {
       return {
@@ -161,6 +43,86 @@ $(function () {
       }
     }
   }
+  var stacks = {
+    web: {
+      icon: 'fab fa-node-js',
+      color: 'primary'
+    },
+    mobile: {
+      icon: 'fas fa-mobile-alt',
+      color: 'secondary'
+    }
+  } 
+  var eventTemplateSource = document.getElementById('events-template').innerHTML;
+  var eventTemplate = Handlebars.compile(eventTemplateSource);
+  var pastEventsTemplateSource = document.getElementById('past-events-template').innerHTML;
+  var pastEventsTemplate = Handlebars.compile(pastEventsTemplateSource);
+  var errorTemplateSource = document.getElementById('error-message-template').innerHTML;
+  var errorTemplate = Handlebars.compile(errorTemplateSource);
+  var spinnerTemplateSource = document.getElementById('spinner-template').innerHTML;
+  var spinnerTemplate = Handlebars.compile(spinnerTemplateSource);
+  var teamItemTemplateSource = document.getElementById('team-item-template').innerHTML;
+  var teamItemTemplate = Handlebars.compile(teamItemTemplateSource);
+  var projectsTemplateSource = document.getElementById('projects-template').innerHTML;
+  var projectsTemplate = Handlebars.compile(projectsTemplateSource);
+  Handlebars.registerHelper('stackColor', function (stack) {
+    if (stacks[stack]) {
+      return new Handlebars.SafeString('bg-dimped__' + stacks[stack].color);
+    } else {
+      console.warn('Unknown stack', stack);
+      return ''
+    }
+  })
+  Handlebars.registerHelper('stackIcon', function (stack) {
+    if (stacks[stack]) {
+      return new Handlebars.SafeString(stacks[stack].icon);
+    } else {
+      console.warn('Unknown stack', stack);
+      return ''
+    }
+  })
+  Handlebars.registerHelper('developerLinks', function (developers) {
+    var result = '';
+    developers = developers
+      .split(',')
+      .map(function (developer) { return developer.trim() });
+    developers.forEach(function (developer, index) {
+      result += '<a href="https://twitter.com/'
+        + developer.substr(1) + '" target="_blank"'
+        + ' rel="noreferrer noopener">'
+        + developer + '</a>'
+      if (index !== developers.length - 1) result += ', '
+    })
+    return new Handlebars.SafeString(result);
+  })
+  $upcomingEventsList.empty();
+  $pastEventsList.empty();
+  $teamSlider.empty();
+  $teamSliderIndicators.empty();
+  $projectList.empty();
+  $upcomingEventsList.html(spinnerTemplate());
+  $pastEventsList.html(spinnerTemplate());
+  $teamSlider.html(spinnerTemplate());
+  $projectList.html(spinnerTemplate());
+  db.collection('projects').get().then(function (querySnapshot) {
+    $projectList.empty()
+    var docDatas = []
+    querySnapshot.forEach(function (doc) {
+      var data = doc.data();
+      docDatas.push(data);
+    });
+    var html = projectsTemplate({
+      projects: docDatas
+    })
+    $projectList.html(html);
+  }).catch(function (err) {
+    console.warn(err);
+    $projectList.empty();
+    var html = errorTemplate({
+      error: 'Failed to fetch projects, please check your internet connection'
+    })
+    $projectList.html(html);
+  })
   db.collection('events').get().then(function (querySnapshot) {
     $upcomingEventsList.empty();
     $pastEventsList.empty();
@@ -229,4 +191,67 @@ $(function () {
     $upcomingEventsList.html(html);
     $pastEventsList.html(html);
   })
+  db.collection('instructors').get().then(function (querySnapshot) {
+    var promises = [];
+    querySnapshot.forEach(function (doc) {
+      promises.push(new Promise(function (resolve, reject) {
+        var data = doc.data();
+        var id = doc.id;
+        instructorImagesRef.child(id).getDownloadURL().then(function (url) {
+          resolve(Object.assign({}, data, {
+            id: id,
+            imageURL: url
+          }));
+        }).catch(function (error) { 
+          if (error.code === 'storage/object-not-found') {
+            // Instructor hasn't uploaded an image
+            resolve(Object.assign({}, data, {
+              id: id,
+              imageURL: '/images/assets/team/avatar.png'
+            }));
+          } else {
+            reject(err);
+          }
+        });
+      }));
+    })
+    return Promise.all(promises);
+  }).then(function (instructors) {
+    instructors = instructors.map(function (data) {
+      return Object.assign({}, data, {
+        imageCSS: 'background-image: url(' + data.imageURL + ')'
+      });
+    });
+    $teamSliderIndicators.empty();
+    $teamSliderIndicators.append(new Array(instructors.length).fill(makeOwlDot()));
+    $teamSlider.empty();
+    var html = teamItemTemplate({
+      instructors: instructors
+    });
+    $teamSlider.html(html);
+    var $ClientsSlider = $('.team-slider');
+    if ($ClientsSlider.length > 0) {
+      $ClientsSlider.owlCarousel({
+        loop: true,
+        center: true,
+        margin: 0,
+        items: 1,
+        nav: false,
+        dots: true,
+        lazyLoad: true,
+        dotsContainer: '.dots'
+      })
+      $('.owl-dot').on('click', function() {
+        $(this).addClass('active').siblings().removeClass('active');
+        $ClientsSlider.trigger('to.owl.carousel', [$(this).index(), 300]);
+      });
+    }
+  }).catch(function (err) {
+    console.warn(err);
+    $teamSlider.empty();
+    var html = errorTemplate({
+      error: 'Failed to fetch instructors, please check your internet connection'
+    });
+    $teamSlider.html(html);
+  });
 });

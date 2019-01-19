@@ -1016,7 +1016,7 @@ hr{
 }
 
 .team-slider__indicators .owl-dot {
-  border-radius: 0 !important;
+  border-radius: 0;
   width: 4px;
   height: 100px;
   background: rgba(255, 255, 255, 0.1);
@@ -1064,11 +1064,11 @@ hr{
 .team-slider__indicators .owl-dot:first-child {
   border-top-left-radius: 4px !important;
   border-bottom-left-radius: 4px !important;
-  border-top-right-radius: 0px !important;
+  /* border-top-right-radius: 0px !important; */
 }
 
 .team-slider__indicators .owl-dot:last-child {
-  border-bottom-left-radius: 0px !important;
+  /* border-bottom-left-radius: 0px !important; */
   border-top-right-radius: 4px !important;
   border-bottom-right-radius: 4px !important;
 }
