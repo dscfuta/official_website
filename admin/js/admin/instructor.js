@@ -92,9 +92,13 @@ $(function () {
         throw new Error('No document is being edited?!');
       } else {
         db.collection("instructors").doc(activeEditDocId).update(data).then(function () {
-          $imageUploadProgress.show();
-          var imageFile = document.getElementById('instructorImage').files[0];
-          return uploadImage(activeEditDocId, imageFile)
+          if (document.getElementById('instructorImage').files && document.getElementById('instructorImage').files[0]) {
+            $imageUploadProgress.show();
+            var imageFile = document.getElementById('instructorImage').files[0];
+            return uploadImage(activeEditDocId, imageFile)
+          } else {
+            return Promise.resolve();
+          }
         }).then(function () {
           $instructorModal.modal('hide');
           $imageUploadProgress.hide();
@@ -108,10 +112,14 @@ $(function () {
       }
     } else {
       db.collection("instructors").add(data).then(function (docRef) {
-        var instructorId = docRef.id;
-        var imageFile = document.getElementById('instructorImage').files[0];
-        $imageUploadProgress.show();
-        return uploadImage(instructorId, imageFile);
+        if (document.getElementById('instructorImage').files && document.getElementById('instructorImage').files[0]) {
+          var instructorId = docRef.id;
+          var imageFile = document.getElementById('instructorImage').files[0];
+          $imageUploadProgress.show();
+          return uploadImage(instructorId, imageFile);
+        } else {
+          return Promise.resolve();
+        }
       }).then(function () {
         $imageUploadProgress.hide();
         $instructorModal.modal('hide')
@@ -128,7 +136,7 @@ $(function () {
     return $('<td></td>').text(text);
   }
   function makeColWithChildren(children) {
-    return $('<td></td').append(children);
+    return $('<td></td').addClass('d-flex').append(children);
   }
   function makeRow(cols) {
     var $row = $('<tr></tr>');
