@@ -90,7 +90,7 @@ $(function () {
     return $('<td></td>').text(text);
   }
   function makeColWithChildren(children) {
-    return $('<td></td').append(children);
+    return $('<td></td').addClass('d-flex').append(children);
   }
   function makeRow(cols) {
     var $row = $('<tr></tr>');
