@@ -144,10 +144,11 @@ $(function () {
       }
       querySnapshot.forEach(function (doc) {
         var data = doc.data()
+        var descriptionTruncated = (data.description ? data.description.slice(0, 30) : '') + '...'
         var dateString = convertToDate(data.date).toLocaleDateString() + ' ' + convertToDate(data.date).toLocaleTimeString();
         $eventsTableBody.append(makeRow([
           makeCol(data.name),
-          makeCol(data.description),
+          makeCol(descriptionTruncated),
           makeCol(data.venue),
           makeCol(dateString),
           makeCol(data.photosURL),
