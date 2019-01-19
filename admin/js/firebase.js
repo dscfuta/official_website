@@ -4,7 +4,7 @@ $(function () {
       if (user) {
         console.log('[DSC:Firebase:Auth]', 'Sucessfully signed in user')
         if (location.href.endsWith('login.html')) {
-          location.href = location.href.slice(0, location.href.indexOf('login.html')) + 'admin.html'
+          location.href = location.href.slice(0, location.href.indexOf('login.html'))
         } else {
           resolve(user)
         }
@@ -32,7 +32,7 @@ $(function () {
         var shownErrorMessage;
         if (errorCode === 'auth/user-not-found') {
           shownErrorMessage = 'No user with that email was found'
-        } else if (errorCode === 'auth/network-request-faied') {
+        } else if (errorCode === 'auth/network-request-failed') {
           shownErrorMessage = 'Network error, please check your internet connection'
         } else if (errorCode === 'auth/wrong-password') {
           shownErrorMessage = 'The provided password is invalid'
