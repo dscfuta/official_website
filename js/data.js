@@ -1,14 +1,3 @@
-(function () {
-  var config = {
-    apiKey: "AIzaSyB6U0DJvc5eNtmOFd0q7YXXwdB5xl9zRvM",
-    authDomain: "dscfuta-website.firebaseapp.com",
-    databaseURL: "https://dscfuta-website.firebaseio.com",
-    projectId: "dscfuta-website",
-    storageBucket: "dscfuta-website.appspot.com",
-    messagingSenderId: "345694247293"
-  };
-  firebase.initializeApp(config);
-})();
 $(function () {
   // Initialize Cloud Firestore through Firebase
   var db = firebase.firestore();

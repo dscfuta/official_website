@@ -1,15 +1,3 @@
-(function () {
-  // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB6U0DJvc5eNtmOFd0q7YXXwdB5xl9zRvM",
-    authDomain: "dscfuta-website.firebaseapp.com",
-    databaseURL: "https://dscfuta-website.firebaseio.com",
-    projectId: "dscfuta-website",
-    storageBucket: "dscfuta-website.appspot.com",
-    messagingSenderId: "345694247293"
-  };
-  firebase.initializeApp(config);
-})();
 $(function () {
   window.__DSCAuthPromise = new Promise(function (resolve) {
     firebase.auth().onAuthStateChanged(function(user) {
