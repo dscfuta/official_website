@@ -1,8 +1,14 @@
 (function ($, Handlebars) {
   /*=================================================*/
   /* MATERIALS SECTION                               */
-  /* TODO: Fetch this data from Firebase instead     */
   /*=================================================*/
+  var db = firebase.firestore();
+    
+
+  // Disable deprecated features
+  db.settings({
+    timestampsInSnapshots: true
+  });
   var sections = [
     { name: "Mobile", color: "primary", icon: "fas fa-mobile-alt", id: "mobile" },
     { name: "Web", color: "secondary", icon: "fab fa-node-js", id: "web" },
@@ -124,17 +130,27 @@
   function fetchAndRenderSection(id) {
     $sectionContent.empty();
     $sectionContent.html(renderSpinner());
-    $.get('/learn/data/' + id + '.json', function (data) {
-      sectionData[id] = data;
-      renderSection(id);
-    }, 'json').fail(function (jqXHR) {
-      setTimeout(function () {
+    db.collection('materials')
+      .where('stack', '==', id)
+      .get().then(function (querySnapshot) {
+        var docDatas = [];
+        querySnapshot.forEach(function (doc) {
+          docDatas.push(doc.data());
+        })
+        var data = {};
+        data['courses'] = docDatas.filter(function (doc) { return doc.type === 'course' });
+        data['books'] = docDatas.filter(function (doc) { return doc.type === 'book' });
+        data['documentation'] = docDatas.filter(function (doc) { return doc.type === 'documentation' });
+        sectionData[id] = data;
+        renderSection(id);
+      })
+      .catch(function (error) {
+        console.warn(error);
         $sectionContent.empty();
         $sectionContent.html(errorMessageTemplate({
           error: "Failed to load resource"
         }))
-      }, 1500);
-    })
+      })
   }
   function renderSection(id) {
     var data = sectionData[id];

@@ -263,7 +263,63 @@
       <div class="tab-content">
         <div class="tab-pane active" id="courses" role="tabpanel" aria-label="Online Courses">
           <div class="row">
-            {{#courses}}
+            {{#if courses.length}}
+              {{#courses}}
+              <div class="col-md-4">
+                <div class="material-single">
+                  <div class="material-single__body">
+                    {{#if ./level}}
+                    <div class="material-attributes">
+                      {{levelTag ./level}}
+                    </div>
+                    {{/if}}
+                    <h2 class="material-title">{{title}}</h2>
+                    <p>{{description}}</p>
+                    <a href="{{link}}" target="_blank" rel="noreferrer noopener" class="btn btn-primary btn-md">View course</a>
+                  </div>
+                </div>
+              </div>
+              {{/courses}}
+            {{else}}
+              <div class="message-wrapper">
+                <h1 class="message-icon">:(</h1>
+                <h2 class="message-text">We have no courses for you right now, check back later.</h2>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="tab-pane" id="books" role="tabpanel" aria-label="Books">
+          <div class="row">
+            {{#if books.length}}
+              {{#books}}
+              <div class="col-md-4">
+                <div class="material-single">
+                  <div class="material-single__body">
+                    <div class="material-attributes">
+                      {{#if ./level}}
+                        {{levelTag ./level}}
+                      {{/if}}
+                      {{bookTags}}
+                    </div>
+                    <h2 class="material-title">{{title}}</h2>
+                    <h5 class="material-author">{{author}}</h5>
+                    <p>{{description}}</p>
+                    <a href="{{link}}" target="_blank" rel="noreferrer noopener" class="btn btn-primary btn-md">View book</a>
+                  </div>
+                </div>
+              </div>
+              {{/books}}
+            {{else}}
+              <div class="message-wrapper">
+                <h1 class="message-icon">:(</h1>
+                <h2 class="message-text">We have no books for you right now, check back later.</h2>
+              </div>
+            {{/if}}
+          </div>
+        </div>
+        <div class="tab-pane" id="documentation" role="tabpanel" aria-label="Documentation">
+          {{#if documentation.length}}
+            {{#documentation}}
             <div class="col-md-4">
               <div class="material-single">
                 <div class="material-single__body">
@@ -274,52 +330,17 @@
                   {{/if}}
                   <h2 class="material-title">{{title}}</h2>
                   <p>{{description}}</p>
-                  <a href="{{link}}" target="_blank" rel="noreferrer noopener" class="btn btn-primary btn-md">View course</a>
+                  <a href="{{link}}" target="_blank" rel="noreferrer noopener" class="btn btn-primary btn-md">View documentation</a>
                 </div>
               </div>
             </div>
-            {{/courses}}
-          </div>
-        </div>
-        <div class="tab-pane" id="books" role="tabpanel" aria-label="Books">
-          <div class="row">
-            {{#books}}
-            <div class="col-md-4">
-              <div class="material-single">
-                <div class="material-single__body">
-                  <div class="material-attributes">
-                    {{#if ./level}}
-                      {{levelTag ./level}}
-                    {{/if}}
-                    {{bookTags}}
-                  </div>
-                  <h2 class="material-title">{{title}}</h2>
-                  <h5 class="material-author">{{author}}</h5>
-                  <p>{{description}}</p>
-                  <a href="{{link}}" target="_blank" rel="noreferrer noopener" class="btn btn-primary btn-md">View book</a>
-                </div>
-              </div>
+            {{/documentation}}
+          {{else}}
+            <div class="message-wrapper">
+              <h1 class="message-icon">:(</h1>
+              <h2 class="message-text">We have no documentation for you right now, check back later.</h2>
             </div>
-            {{/books}}
-          </div>
-        </div>
-        <div class="tab-pane" id="documentation" role="tabpanel" aria-label="Documentation">
-          {{#documentation}}
-          <div class="col-md-4">
-            <div class="material-single">
-              <div class="material-single__body">
-                {{#if ./level}}
-                <div class="material-attributes">
-                  {{levelTag ./level}}
-                </div>
-                {{/if}}
-                <h2 class="material-title">{{title}}</h2>
-                <p>{{description}}</p>
-                <a href="{{link}}" target="_blank" rel="noreferrer noopener" class="btn btn-primary btn-md">View documentation</a>
-              </div>
-            </div>
-          </div>
-          {{/documentation}}
+          {{/if}}
         </div>
       </div>
     </script>
@@ -346,6 +367,7 @@
     <script src="/js/vendors/swiper.min.js"></script>
     <script src="/js/vendors/owl.carousel.min.js"></script>
     <script src="/js/vendors/handlebars.min.js"></script>
+    <script src="/js/firebase.config.js"></script>
     <script src="/js/custom.js"></script>
     <script src="/js/learn_data.js"></script>
   </body>
