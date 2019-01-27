@@ -369,7 +369,7 @@ body.sidebar-toggled footer.sticky-footer {
 }
 
 
-#refreshProjectsButton, #refreshButton {
+#refreshProjectsButton, #refreshButton, .btn-refresh {
   float: right;
   display: block;
   cursor: pointer;
