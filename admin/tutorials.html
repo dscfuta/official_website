@@ -1,38 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-
   <head>
-
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="DSC FUTA"/>
-    <meta name="description"
-          content="Developer Student Clubs (DSC)a is a Google Developers program for university students to learn mobile and web development skills.">
-    <meta name="keywords"
-          content="dsc, futa, kelvin kamau,google developers, sub saharan africa, kenya, computer science"/>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="author" content="DSC FUTA" />
+    <meta
+      name="description"
+      content="Developer Student Clubs (DSC)a is a Google Developers program for university students to learn mobile and web development skills."
+    />
+    <meta
+      name="keywords"
+      content="dsc, futa, kelvin kamau,google developers, sub saharan africa, kenya, computer science"
+    />
     <title>DSC Admin - Events</title>
-    <link rel="icon" href="images/icon.png" type="image/png"/>
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-    <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
-    <link href="css/admin.css" rel="stylesheet">
-
+    <link rel="icon" href="images/icon.png" type="image/png" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="vendor/fontawesome-free/css/all.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="vendor/datatables/dataTables.bootstrap4.min.css"
+      rel="stylesheet"
+    />
+    <link href="css/admin.css" rel="stylesheet" />
   </head>
 
   <body id="page-top">
-
     <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-      <a class="navbar-brand mr-1" href="index.html"><img href="images/icon.png">DSC Admin</a>
-      
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+      <a class="navbar-brand mr-1" href="index.html"
+        ><img href="images/icon.png" />DSC Admin</a
+      >
+
+      <button
+        class="btn btn-link btn-sm text-white order-1 order-sm-0"
+        id="sidebarToggle"
+        href="#"
+      >
         <i class="fas fa-bars"></i>
       </button>
 
       <!-- Navbar Search -->
-      <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
+      <form
+        class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"
+      >
         <div class="input-group">
-          <input type="text" class="form-control" placeholder=" " aria-label="Search" aria-describedby="basic-addon2">
+          <input
+            type="text"
+            class="form-control"
+            placeholder=" "
+            aria-label="Search"
+            aria-describedby="basic-addon2"
+          />
           <div class="input-group-append">
             <button class="btn btn-primary" type="button">
               <i class="fas fa-search"></i>
@@ -44,63 +65,69 @@
       <!-- Navbar -->
       <ul class="navbar-nav ml-auto ml-md-0">
         <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a
+            class="nav-link dropdown-toggle"
+            href="#"
+            id="userDropdown"
+            role="button"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
             <i class="fas fa-user-circle fa-fw"></i>
           </a>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+          <div
+            class="dropdown-menu dropdown-menu-right"
+            aria-labelledby="userDropdown"
+          >
+            <a
+              class="dropdown-item"
+              href="#"
+              data-toggle="modal"
+              data-target="#logoutModal"
+              >Logout</a
+            >
             <a class="dropdown-item" href="index.html">Back to homepage</a>
           </div>
         </li>
       </ul>
-
     </nav>
 
     <div id="wrapper">
-
       <!-- Sidebar -->
-			<ul class="sidebar navbar-nav">
-				<li class="nav-item">
-					<a class="nav-link" href="index.html">
-						<i class="fas fa-fw fa-tachometer-alt"></i>
-						<span>Dashboard</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="instructor.html">
-						<i class="fas fa-fw fa-user-alt"></i>
-						<span>Instructors</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="events.html">
-						<i class="fas fa-fw fa-calendar-alt"></i>
-						<span>Events</span>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a class="nav-link" href="projects.html">
-						<i class="fas fa-fw fa-folder"></i>
-						<span>Projects</span>
-					</a>
+      <ul class="sidebar navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-tachometer-alt"></i> <span>Dashboard</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="instructor.html">
+            <i class="fas fa-fw fa-user-alt"></i> <span>Instructors</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="events.html">
+            <i class="fas fa-fw fa-calendar-alt"></i> <span>Events</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="projects.html">
+            <i class="fas fa-fw fa-folder"></i> <span>Projects</span>
+          </a>
         </li>
         <li class="nav-item active">
-					<a class="nav-link" href="#">
-						<i class="fas fa-fw fa-book"></i>
-						<span>Tutorials</span>
-					</a>
-				</li>
-			</ul>
+          <a class="nav-link" href="#">
+            <i class="fas fa-fw fa-book"></i> <span>Tutorials</span>
+          </a>
+        </li>
+      </ul>
 
       <div id="content-wrapper">
-
         <div class="container-fluid">
-
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
-            <li class="breadcrumb-item">
-              <a href="#">Dashboard</a>
-            </li>
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
             <li class="breadcrumb-item active">Tutorials</li>
           </ol>
 
@@ -115,18 +142,24 @@
               </select>
             </div>
           </div>
-          
+
           <!-- dashboard card -->
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-fw fa-folder"></i>
-              Courses
+              <i class="fas fa-fw fa-folder"></i> Courses
               <i class="fas fa-sync fa-spin btn-refresh" data-type="course"></i>
             </div>
             <div class="card-body">
-              <div class="alert alert-danger error-alert" data-type="course" style="display: none">
-              </div>
-              <table class="table table-striped" id="courseTable" style="min-width: 100%">
+              <div
+                class="alert alert-danger error-alert"
+                data-type="course"
+                style="display: none"
+              ></div>
+              <table
+                class="table table-striped"
+                id="courseTable"
+                style="min-width: 100%"
+              >
                 <thead>
                   <tr>
                     <th>Title</th>
@@ -136,25 +169,35 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-
-                </tbody>
-			        </table>
-		        </div>
+                <tbody></tbody>
+              </table>
+            </div>
             <div class="card-footer text-right">
-              <button class="btn btn-primary btn-add" data-type="course" disabled>Add Course</button>
+              <button
+                class="btn btn-primary btn-add"
+                data-type="course"
+                disabled
+              >
+                Add Course
+              </button>
             </div>
           </div>
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-fw fa-folder"></i>
-              Books
+              <i class="fas fa-fw fa-folder"></i> Books
               <i class="fas fa-sync fa-spin btn-refresh" data-type="book"></i>
             </div>
             <div class="card-body">
-              <div class="alert alert-danger error-alert" data-type="book" style="display: none">
-              </div>
-              <table class="table table-striped" id="bookTable" style="min-width: 100%">
+              <div
+                class="alert alert-danger error-alert"
+                data-type="book"
+                style="display: none"
+              ></div>
+              <table
+                class="table table-striped"
+                id="bookTable"
+                style="min-width: 100%"
+              >
                 <thead>
                   <tr>
                     <th>Title</th>
@@ -166,25 +209,34 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-
-                </tbody>
+                <tbody></tbody>
               </table>
             </div>
             <div class="card-footer text-right">
-              <button class="btn btn-primary btn-add" data-type="book" disabled>Add Book</button>
+              <button class="btn btn-primary btn-add" data-type="book" disabled>
+                Add Book
+              </button>
             </div>
           </div>
           <div class="card mb-3">
             <div class="card-header">
-              <i class="fas fa-fw fa-folder"></i>
-              Documentation
-              <i class="fas fa-sync fa-spin btn-refresh" data-type="documentation"></i>
+              <i class="fas fa-fw fa-folder"></i> Documentation
+              <i
+                class="fas fa-sync fa-spin btn-refresh"
+                data-type="documentation"
+              ></i>
             </div>
             <div class="card-body">
-              <div class="alert alert-danger error-alert" data-type="documentation" style="display: none">
-              </div>
-              <table class="table table-striped" id="documentationTable" style="min-width: 100%">
+              <div
+                class="alert alert-danger error-alert"
+                data-type="documentation"
+                style="display: none"
+              ></div>
+              <table
+                class="table table-striped"
+                id="documentationTable"
+                style="min-width: 100%"
+              >
                 <thead>
                   <tr>
                     <th>Title</th>
@@ -194,235 +246,431 @@
                     <th>Actions</th>
                   </tr>
                 </thead>
-                <tbody>
-
-                </tbody>
+                <tbody></tbody>
               </table>
             </div>
             <div class="card-footer text-right">
-              <button class="btn btn-primary btn-add" data-type="documentation" disabled>Add Documentation</button>
+              <button
+                class="btn btn-primary btn-add"
+                data-type="documentation"
+                disabled
+              >
+                Add Documentation
+              </button>
             </div>
           </div>
-            
-          
-	<!-- Sticky Footer -->
-	<footer class="sticky-footer">
-	  <div class="container my-auto">
-		<div class="copyright text-center my-auto">
-		  <span>Copyright © DSC FUTA 2018</span>
-		</div>
-	  </div>
-	</footer>
 
-  </div>
-  <!-- /.content-wrapper -->
-
-</div>
-<!-- /#wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-  <i class="fas fa-angle-up"></i>
-</a>
-
-<!-- Logout Modal-->
-<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-	<div class="modal-content">
-	  <div class="modal-header">
-		<h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-		<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-		  <span aria-hidden="true">×</span>
-		</button>
-	  </div>
-	  <div class="alert alert-danger" style="display: none" id="errorAlert">
-	  </div>
-	  <div class="modal-body">Do you want to logout?</div>
-	  <div class="modal-footer">
-		<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-		<button class="btn btn-primary" type="button" id="logoutButton">Logout</button>
-	  </div>
-	</div>
-  </div>
-</div>
-
-<!-- Add/Edit Course Modal -->
-<div class="modal" id="courseModal" tabindex="-1" role="dialog" aria-labelledby="courseModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-	<form class="modal-content" id="courseForm">
-	  <div class="modal-header">
-		<h5 class="modal-title" id="courseModalTitle"><span class="modalModeText">Add</span> Course</h5>
-		<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-		  <span aria-hidden="true">×</span>
-		</button>
-	  </div>
-	  <div class="modal-body">
-		<div class="alert alert-danger error-alert" id="courseModalErrorAlert" style="display: none"></div>
-		<div class="row mb-3">
-		  <div class="col-12">
-			<input class="form-control" id="courseTitle" placeholder="Course Title" required>
-		  </div>
-		</div>
-		<div class="row mb-3">
-		  <div class="col-12">
-			<textarea class="form-control" id="courseDescription" placeholder="Course Description" required></textarea>
-		  </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12">
-        <select name="courseLevel" id="courseLevel" class="form-control" required>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="expert">Expert</option>
-        </select>
-      </div>
-    </div>
-		<div class="row mb-3">
-		  <div class="col-12">
-			<input class="form-control" id="courseLink" placeholder="Course Link" required>
-		  </div>
-		</div>
-	  </div>
-	  <div class="modal-footer">
-		<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-		<button class="btn btn-primary btn-submit" data-type="course" type="submit"><span class="modalModeText">Add</span></button>
-	  </div>
-	</form>
-  </div>
-</div>
-<!-- Add/Edit Documentation Modal -->
-<div class="modal" id="documentationModal" tabindex="-1" role="dialog" aria-labelledby="documentationModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-  <form class="modal-content" id="documentationForm">
-    <div class="modal-header">
-    <h5 class="modal-title" id="documentationModalTitle"><span class="modalModeText">Add</span> Course</h5>
-    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-      <span aria-hidden="true">×</span>
-    </button>
-    </div>
-    <div class="modal-body">
-    <div class="alert alert-danger error-alert" id="documentationModalErrorAlert" style="display: none"></div>
-    <div class="row mb-3">
-      <div class="col-12">
-      <input class="form-control" id="documentationTitle" placeholder="Documentation Title" required>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12">
-      <textarea class="form-control" id="documentationDescription" placeholder="Documentation Description" required></textarea>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12">
-        <select name="documentationLevel" id="documentationLevel" class="form-control" required>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="expert">Expert</option>
-        </select>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12">
-      <input class="form-control" id="documentationLink" placeholder="Documentation Link" required>
-      </div>
-    </div>
-    </div>
-    <div class="modal-footer">
-    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-    <button class="btn btn-primary btn-submit" data-type="documentation" type="submit"><span class="modalModeText">Add</span></button>
-    </div>
-  </form>
-  </div>
-</div>
-<!-- Add/Edit Book Modal -->
-<div class="modal" id="bookModal" tabindex="-1" role="dialog" aria-labelledby="bookModalTitle" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-	<form class="modal-content" id="bookForm">
-	  <div class="modal-header">
-		<h5 class="modal-title" id="bookModalTitle"><span class="modalModeText">Add</span> Book</h5>
-		<button class="close" type="button" data-dismiss="modal" aria-label="Close">
-		  <span aria-hidden="true">×</span>
-		</button>
-	  </div>
-	  <div class="modal-body">
-		<div class="alert alert-danger error-alert" id="bookModalErrorAlert" style="display: none"></div>
-		<div class="row mb-3">
-		  <div class="col-12">
-			<input class="form-control" id="bookTitle" placeholder="Book Title" required>
-		  </div>
-    </div>
-    <div class="row mb-3">
-		  <div class="col-12">
-			<input class="form-control" id="bookAuthor" placeholder="Book Author" required>
-		  </div>
-		</div>
-		<div class="row mb-3">
-		  <div class="col-12">
-			<textarea class="form-control" id="bookDescription" placeholder="Book Description" required></textarea>
-		  </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12">
-        <select name="bookLevel" id="bookLevel" class="form-control" required>
-          <option value="beginner">Beginner</option>
-          <option value="intermediate">Intermediate</option>
-          <option value="expert">Expert</option>
-        </select>
-      </div>
-    </div>
-    <div class="row mb-3">
-      <div class="col-12">
-        <p class="form-text">This book is:</p>
-      </div>
-      <div class="col-12">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" value="print" name="bookAvailability" id="bookAvailabilityPrint">
-          <label class="form-check-label" for="bookAvailabilityPrint">
-            Available in printed form
-          </label>
+          <!-- Sticky Footer -->
+          <footer class="sticky-footer">
+            <div class="container my-auto">
+              <div class="copyright text-center my-auto">
+                <span>Copyright © DSC FUTA 2018</span>
+              </div>
+            </div>
+          </footer>
         </div>
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" value="web" name="bookAvailability" id="bookAvailabilityWeb">
-          <label for="bookAvailabilityWeb" class="form-check-label">
-            Available to read online
-          </label>
-        </div>
-        <div class="form-check">
-          <input type="checkbox" name="bookAvailability" id="bookAvailabilityEbook" class="form-check-input" value="ebook">
-          <label for="bookAvailabilityEbook" class="form-check-label">
-            Available as an EBook
-          </label>
+        <!-- /.content-wrapper -->
+      </div>
+      <!-- /#wrapper -->
+
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+
+      <!-- Logout Modal-->
+      <div
+        class="modal fade"
+        id="logoutModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">
+                Ready to Leave?
+              </h5>
+              <button
+                class="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div
+              class="alert alert-danger"
+              style="display: none"
+              id="errorAlert"
+            ></div>
+            <div class="modal-body">Do you want to logout?</div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button class="btn btn-primary" type="button" id="logoutButton">
+                Logout
+              </button>
+            </div>
+          </div>
         </div>
       </div>
+
+      <!-- Add/Edit Course Modal -->
+      <div
+        class="modal"
+        id="courseModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="courseModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <form class="modal-content" id="courseForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="courseModalTitle">
+                <span class="modalModeText">Add</span> Course
+              </h5>
+              <button
+                class="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div
+                class="alert alert-danger error-alert"
+                id="courseModalErrorAlert"
+                style="display: none"
+              ></div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    id="courseTitle"
+                    placeholder="Course Title"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <textarea
+                    class="form-control"
+                    id="courseDescription"
+                    placeholder="Course Description"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <select
+                    name="courseLevel"
+                    id="courseLevel"
+                    class="form-control"
+                    required
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="expert">Expert</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    id="courseLink"
+                    placeholder="Course Link"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-primary btn-submit"
+                data-type="course"
+                type="submit"
+              >
+                <span class="modalModeText">Add</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Add/Edit Documentation Modal -->
+      <div
+        class="modal"
+        id="documentationModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="documentationModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <form class="modal-content" id="documentationForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="documentationModalTitle">
+                <span class="modalModeText">Add</span> Course
+              </h5>
+              <button
+                class="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div
+                class="alert alert-danger error-alert"
+                id="documentationModalErrorAlert"
+                style="display: none"
+              ></div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    id="documentationTitle"
+                    placeholder="Documentation Title"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <textarea
+                    class="form-control"
+                    id="documentationDescription"
+                    placeholder="Documentation Description"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <select
+                    name="documentationLevel"
+                    id="documentationLevel"
+                    class="form-control"
+                    required
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="expert">Expert</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    id="documentationLink"
+                    placeholder="Documentation Link"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-primary btn-submit"
+                data-type="documentation"
+                type="submit"
+              >
+                <span class="modalModeText">Add</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- Add/Edit Book Modal -->
+      <div
+        class="modal"
+        id="bookModal"
+        tabindex="-1"
+        role="dialog"
+        aria-labelledby="bookModalTitle"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog" role="document">
+          <form class="modal-content" id="bookForm">
+            <div class="modal-header">
+              <h5 class="modal-title" id="bookModalTitle">
+                <span class="modalModeText">Add</span> Book
+              </h5>
+              <button
+                class="close"
+                type="button"
+                data-dismiss="modal"
+                aria-label="Close"
+              >
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div
+                class="alert alert-danger error-alert"
+                id="bookModalErrorAlert"
+                style="display: none"
+              ></div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    id="bookTitle"
+                    placeholder="Book Title"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    id="bookAuthor"
+                    placeholder="Book Author"
+                    required
+                  />
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <textarea
+                    class="form-control"
+                    id="bookDescription"
+                    placeholder="Book Description"
+                    required
+                  ></textarea>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <select
+                    name="bookLevel"
+                    id="bookLevel"
+                    class="form-control"
+                    required
+                  >
+                    <option value="beginner">Beginner</option>
+                    <option value="intermediate">Intermediate</option>
+                    <option value="expert">Expert</option>
+                  </select>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12"><p class="form-text">This book is:</p></div>
+                <div class="col-12">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="checkbox"
+                      value="print"
+                      name="bookAvailability"
+                      id="bookAvailabilityPrint"
+                    />
+                    <label class="form-check-label" for="bookAvailabilityPrint">
+                      Available in printed form
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      class="form-check-input"
+                      value="web"
+                      name="bookAvailability"
+                      id="bookAvailabilityWeb"
+                    />
+                    <label for="bookAvailabilityWeb" class="form-check-label">
+                      Available to read online
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      type="checkbox"
+                      name="bookAvailability"
+                      id="bookAvailabilityEbook"
+                      class="form-check-input"
+                      value="ebook"
+                    />
+                    <label for="bookAvailabilityEbook" class="form-check-label">
+                      Available as an EBook
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-12">
+                  <input
+                    class="form-control"
+                    id="bookLink"
+                    placeholder="Book Link"
+                    required
+                  />
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                class="btn btn-secondary"
+                type="button"
+                data-dismiss="modal"
+              >
+                Cancel
+              </button>
+              <button
+                class="btn btn-primary btn-submit"
+                data-type="book"
+                type="submit"
+              >
+                <span class="modalModeText">Add</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-		<div class="row mb-3">
-		  <div class="col-12">
-			<input class="form-control" id="bookLink" placeholder="Book Link" required>
-		  </div>
-		</div>
-	  </div>
-	  <div class="modal-footer">
-		<button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-		<button class="btn btn-primary btn-submit" data-type="book" type="submit"><span class="modalModeText">Add</span></button>
-	  </div>
-	</form>
-  </div>
-</div>
 
-<script src="js/vendors/firebase-app.js"></script>
-<script src="js/vendors/firebase-auth.min.js"></script>
-<script src="js/vendors/firebase-firestore.min.js"></script>
-<script src="js/vendors/firebase-storage.min.js"></script>
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-<script src="vendor/datatables/jquery.dataTables.min.js"></script>
-<script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
-<script src="js/admin.min.js"></script>
-<script src="js/firebase.config.js"></script>
-<script src="js/firebase.js"></script>
-<script src="js/admin/tutorials.js"></script>
-
-</body>
-
+    <script src="js/vendors/firebase-app.js"></script>
+    <script src="js/vendors/firebase-auth.min.js"></script>
+    <script src="js/vendors/firebase-firestore.min.js"></script>
+    <script src="js/vendors/firebase-storage.min.js"></script>
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+    <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="js/admin.min.js"></script>
+    <script src="js/firebase.config.js"></script>
+    <script src="js/firebase.js"></script>
+    <script src="js/admin/tutorials.js"></script>
+  </body>
 </html>
